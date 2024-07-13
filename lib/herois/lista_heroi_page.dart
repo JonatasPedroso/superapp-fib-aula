@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:superapp/api/api_service.dart';
+import 'package:superapp/herois/heroi_item_list.dart';
+import 'package:superapp/model/heroi_item_model.dart';
 
 class ListaHeroiPage extends StatefulWidget {
   const ListaHeroiPage({super.key});
@@ -9,10 +11,12 @@ class ListaHeroiPage extends StatefulWidget {
 }
 
 class _ListaHeroiPageState extends State<ListaHeroiPage> {
+  late Future<List<HeroiItemModel>> futureHerois;
+
   @override
   void initState() {
     super.initState();
-    ApiService().fetchHerois();
+    futureHerois = ApiService().fetchHerois();
   }
 
   @override
@@ -24,7 +28,21 @@ class _ListaHeroiPageState extends State<ListaHeroiPage> {
         centerTitle: true,
       ),
       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-      body: const Center(),
+      body: FutureBuilder(
+          future: futureHerois,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return const Center(child: Text('Erro'));
+            }
+            return ListView.separated(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) =>
+                  HeroiItemList(heroi: snapshot.data![index]),
+              separatorBuilder: (context, index) => const Divider(),
+            );
+          }),
     );
   }
 }
