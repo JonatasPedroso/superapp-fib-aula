@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:superapp/atracoes/lista_atracao_page.dart';
+import 'package:superapp/star_wars/lista_star_wars_page.dart';
 import 'package:superapp/criar_atracoes/criar_atracao_page.dart';
 import 'package:superapp/herois/lista_heroi_page.dart';
 import 'package:superapp/ia/ia_gera_page.dart';
@@ -21,7 +21,7 @@ class GridItem extends StatelessWidget {
     List<String> tituloDaLista = [
       "Listagem de Herois",
       "Inteligência Artificial",
-      "Atrações Turísticas",
+      "Star Wars",
       "Criar Atracao",
     ];
 
@@ -44,11 +44,11 @@ class GridItem extends StatelessWidget {
           ));
     }
 
-    void atracoesTuristicas() {
+    void listagemStarWars() {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const ListaAtracaoPage(),
+            builder: (context) => const ListaStarWarsPage(),
           ));
     }
 
@@ -65,7 +65,7 @@ class GridItem extends StatelessWidget {
         switch (index) {
           0 => listagemHerois(),
           1 => inteligenciaArtificial(),
-          2 => atracoesTuristicas(),
+          2 => listagemStarWars(),
           3 => criarAtracao(),
           _ => print("OPCAO INVALIDA"),
         }
@@ -78,8 +78,12 @@ class GridItem extends StatelessWidget {
             Icon(
               iconData,
               size: 40,
+              color: Colors.white,
             ),
-            Text(titulo),
+            Text(
+              titulo,
+              style: const TextStyle(color: Colors.white),
+            ),
           ],
         ),
       ),
