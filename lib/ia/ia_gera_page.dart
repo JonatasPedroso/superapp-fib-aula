@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:superapp/ia/ia_imagem_gerada_page.dart';
 
 class IaGeraPage extends StatefulWidget {
   const IaGeraPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _IaGeraPageState createState() => _IaGeraPageState();
 }
 
 class _IaGeraPageState extends State<IaGeraPage> {
-  final TextEditingController _tfImagemGerar = TextEditingController();
+  final TextEditingController _tfImageGerar = TextEditingController();
 
   void _gerarImagem() {
-    print(_tfImagemGerar.text);
+    print(_tfImageGerar.text);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => IaImagemGeradaPage(prompt: _tfImageGerar.text),
+      ),
+    );
   }
 
   @override
@@ -35,11 +43,17 @@ class _IaGeraPageState extends State<IaGeraPage> {
                 color: Colors.green,
               ),
               TextField(
-                controller: _tfImagemGerar,
+                controller: _tfImageGerar,
                 decoration: const InputDecoration(
-                  labelText: "Digite o que voce deseja na imagem",
+                  labelText: "Digite o que você deseja gerar",
                   labelStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black38, width: 2.0),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.green, width: 2.0),
+                  ),
                 ),
               ),
               const SizedBox(
