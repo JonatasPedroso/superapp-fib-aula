@@ -5,6 +5,7 @@ class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MenuPageState createState() => _MenuPageState();
 }
 
@@ -22,7 +23,7 @@ class _MenuPageState extends State<MenuPage> {
         child: GridView.count(
           crossAxisCount: 2,
           children: List.generate(
-            4,
+            5,
             (index) {
               return GridItem(
                 index: index,

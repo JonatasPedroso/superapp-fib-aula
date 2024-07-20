@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:superapp/camera/camera_page.dart';
 import 'package:superapp/star_wars/lista_star_wars_page.dart';
 import 'package:superapp/criar_atracoes/criar_atracao_page.dart';
 import 'package:superapp/herois/lista_heroi_page.dart';
@@ -16,6 +17,7 @@ class GridItem extends StatelessWidget {
       Icons.computer_rounded,
       Icons.museum,
       Icons.camera,
+      Icons.camera_alt,
     ];
 
     List<String> tituloDaLista = [
@@ -23,6 +25,7 @@ class GridItem extends StatelessWidget {
       "Inteligência Artificial",
       "Star Wars",
       "Criar Atracao",
+      "Camera",
     ];
 
     IconData iconData = listaDeIcones[index];
@@ -60,6 +63,14 @@ class GridItem extends StatelessWidget {
           ));
     }
 
+    void criarCamera() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CameraPage(),
+          ));
+    }
+
     return GestureDetector(
       onTap: () => {
         switch (index) {
@@ -67,6 +78,7 @@ class GridItem extends StatelessWidget {
           1 => inteligenciaArtificial(),
           2 => listagemStarWars(),
           3 => criarAtracao(),
+          4 => criarCamera(),
           _ => print("OPCAO INVALIDA"),
         }
       },

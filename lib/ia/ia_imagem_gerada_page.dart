@@ -26,7 +26,7 @@ class _IaImagemGeradaPageState extends State<IaImagemGeradaPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Lista Heróis"),
+        title: const Text("Imagem Gerada"),
         centerTitle: true,
       ),
       body: FutureBuilder(

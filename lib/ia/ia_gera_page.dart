@@ -49,7 +49,7 @@ class _IaGeraPageState extends State<IaGeraPage> {
                   labelStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black38, width: 2.0),
+                    borderSide: BorderSide(color: Colors.green, width: 2.0),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.green, width: 2.0),
